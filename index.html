@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마음봄 - 당신의 마음을 피워내는 공간</title>
+    <meta name="description" content="당신의 마음, 정답은 이미 당신 안에 있어요. 자기성찰을 통해 마음의 봄을 피워내는 감정 교육 플랫폼">
+    <meta name="keywords" content="감정교육, 마음봄, 자기성찰, 정서교육, 감정관리, 마음챙김">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="마음봄 - 당신의 마음을 피워내는 공간">
+    <meta property="og:description" content="당신의 마음, 정답은 이미 당신 안에 있어요">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #fafafa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* 헤더 */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(139, 92, 246, 0.1);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #8b5cf6;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .nav-links a:hover {
+            color: #8b5cf6;
+            background: rgba(139, 92, 246, 0.1);
+        }
+
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #8b5cf6;
+            cursor: pointer;
+        }
+
+        /* 히어로 섹션 */
+        .hero {
+            background: linear-gradient(135deg, #f3e8ff 0%, #e6d4ff 50%, #ddd6fe 100%);
+            padding: 5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="20" fill="rgba(139,92,246,0.1)">🌸</text></svg>') repeat;
+            animation: float 30s infinite linear;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: #6b46c1;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #7c3aed;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 버튼 스타일 */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.5);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #8b5cf6;
+            border: 2px solid #8b5cf6;
+        }
+
+        .btn-secondary:hover {
+            background: #8b5cf6;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+        }
+
+        /* 섹션 공통 스타일 */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #6b46c1;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, #8b5cf6, #10b981);
+            border-radius: 2px;
+        }
+
+        .section-description {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+        }
+
+        /* 감정 카드 그리드 */
+        .emotions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .emotion-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border-top: 4px solid;
+        }
+
+        .emotion-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .emotion-card:hover::before {
+            opacity: 1;
+        }
+
+        .emotion-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .emotion-card.joy { border-color: #fbbf24; }
+        .emotion-card.sadness { border-color: #3b82f6; }
+        .emotion-card.anger { border-color: #ef4444; }
+        .emotion-card.fear { border-color: #10b981; }
+        .emotion-card.shame { border-color: #8b5cf6; }
+        .emotion-card.neutral { border-color: #6b7280; }
+
+        .emotion-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .emotion-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .emotion-card.joy .emotion-title { color: #f59e0b; }
+        .emotion-card.sadness .emotion-title { color: #3b82f6; }
+        .emotion-card.anger .emotion-title { color: #ef4444; }
+        .emotion-card.fear .emotion-title { color: #10b981; }
+        .emotion-card.shame .emotion-title { color: #8b5cf6; }
+        .emotion-card.neutral .emotion-title { color: #6b7280; }
+
+        .emotion-description {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .emotion-tags {
+            font-size: 0.9rem;
+            color: #888;
+            font-style: italic;
+        }
+
+        /* 활동 카드 그리드 */
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .activity-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .activity-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .activity-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #8b5cf6;
+            margin-bottom: 1rem;
+        }
+
+        .activity-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .activity-description a {
+            color: #8b5cf6;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .activity-description a:hover {
+            text-decoration: underline;
+        }
+
+        /* 마음 대화 섹션 */
+        .chat-section {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .chat-container {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 600px;
+            color: #333;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .chat-preview {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+            border-left: 4px solid #8b5cf6;
+        }
+
+        /* 푸터 */
+        footer {
+            background: #1f2937;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #8b5cf6;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #d1d5db;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 2rem;
+            color: #9ca3af;
+        }
+
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                border-radius: 0 0 12px 12px;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero {
+                padding: 3rem 0;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .emotions-grid,
+            .activities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+        }
+
+        /* 스크롤 애니메이션 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 부드러운 스크롤 */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 -->
+    <header>
+        <nav class="container">
+            <a href="#home" class="logo">
+                🌸 마음봄
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">홈</a></li>
+                <li><a href="#emotions">감정 탐색</a></li>
+                <li><a href="#activities">마음 돌봄</a></li>
+                <li><a href="#chat">마음 대화</a></li>
+                <li><a href="https://brunch.co.kr/@2854a83b1de34a7/16" target="_blank">탄생 이야기</a></li>
+            </ul>
+            <button class="mobile-menu" onclick="toggleMobileMenu()">☰</button>
+        </nav>
+    </header>
+
+    <!-- 히어로 섹션 -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="container">
+                <h1>당신의 마음, 정답은 이미 당신 안에 있어요</h1>
+                <p>
+                    우리는 늘 좋은 감정을 느끼고, 나쁜 감정을 없애야 한다고 배워요. 하지만 어떤 감정이든 저마다의 이유가 있습니다. 
+                    '마음봄'은 당신에게 해결책을 주거나 판단하지 않아요. 그저 당신의 마음을 있는 그대로 비추는 따뜻하고 안전한 거울이 되어줄 뿐입니다. 
+                    내 안의 이야기를 꺼내놓는 것만으로도, 놀라운 발견이 시작될 거예요. 🌱
+                </p>
+                <div class="hero-buttons">
+                    <a href="https://chatgpt.com/g/g-6735399fe05c81908ab27480dd89f233-maeumbom-2025-04-09" target="_blank" class="btn btn-primary">
+                        🌸 내 마음 비춰보기
+                    </a>
+                    <a href="https://brunch.co.kr/@2854a83b1de34a7/16" target="_blank" class="btn btn-secondary">
+                        📖 마음봄의 탄생 이야기
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 감정 탐색 섹션 -->
+    <section id="emotions" class="section fade-in" style="background: #fefefe;">
+        <div class="container">
+            <h2 class="section-title">어떤 감정이든, 나에게 보내는 소중한 신호</h2>
+            <p class="section-description">
+                심리학에서 감정은 생존과 적응을 위한 중요한 정보입니다. 기쁨은 무엇이 우리를 살게 하는지, 두려움은 무엇으로부터 우리를 지켜야 하는지 알려주죠. 
+                '좋은 감정', '나쁜 감정'이라는 꼬리표를 떼고, 지금 찾아온 감정이 내게 어떤 말을 건네는지 귀 기울여 보세요.
+            </p>
+            
+            <div class="emotions-grid">
+                <div class="emotion-card joy" onclick="exploreEmotion('기쁨')">
+                    <span class="emotion-icon">😊</span>
+                    <h3 class="emotion-title">기쁨 (Joy)</h3>
+                    <p class="emotion-description">
+                        성취, 사랑, 감사함에서 오는 긍정적 에너지. 무엇이 당신을 살게 하는지 알려주는 신호입니다. 
+                        '마음봄'에게 당신의 기쁨을 이야기하며 그 의미를 더 깊이 새겨보세요.
+                    </p>
+                    <p class="emotion-tags">#행복 #즐거움 #만족 #희열</p>
+                </div>
+
+                <div class="emotion-card sadness" onclick="exploreEmotion('슬픔')">
+                    <span class="emotion-icon">😢</span>
+                    <h3 class="emotion-title">슬픔 (Sadness)</h3>
+                    <p class="emotion-description">
+                        소중한 것을 잃었음을 알려주는 신호. 억지로 이겨내려 하지 마세요. 
+                        '마음봄'과 함께 슬픔에 충분히 머무를 때, 우리는 더 깊어지고 성장할 수 있습니다.
+                    </p>
+                    <p class="emotion-tags">#우울 #그리움 #허무 #상실감</p>
+                </div>
+
+                <div class="emotion-card anger" onclick="exploreEmotion('분노')">
+                    <span class="emotion-icon">😠</span>
+                    <h3 class="emotion-title">분노 (Anger)</h3>
+                    <p class="emotion-description">
+                        나의 경계선이 무너졌다는 중요한 신호. '내 안의 무엇이 반응했을까?' 하고 
+                        '마음봄'에게 이야기하며 나를 지킬 힘을 발견해보세요.
+                    </p>
+                    <p class="emotion-tags">#화남 #짜증 #격분 #억울함</p>
+                </div>
+
+                <div class="emotion-card fear" onclick="exploreEmotion('두려움')">
+                    <span class="emotion-icon">😨</span>
+                    <h3 class="emotion-title">두려움 (Fear)</h3>
+                    <p class="emotion-description">
+                        위험과 불확실성으로부터 나를 지키려는 신호. 무엇이 당신을 불안하게 하는지 
+                        '마음봄'에게 털어놓으며 안전지대를 찾아보세요.
+                    </p>
+                    <p class="emotion-tags">#불안 #공포 #걱정 #긴장</p>
+                </div>
+
+                <div class="emotion-card shame" onclick="exploreEmotion('수치심')">
+                    <span class="emotion-icon">😳</span>
+                    <h3 class="emotion-title">수치심 (Shame)</h3>
+                    <p class="emotion-description">
+                        나의 행동이나 존재에 대한 부정적 평가에서 오는 감정. '마음봄'의 비판단적인 대화 속에서 
+                        나 자신을 온전히 수용하는 연습을 시작해보세요.
+                    </p>
+                    <p class="emotion-tags">#부끄러움 #죄책감 #당혹감 #후회</p>
+                </div>
+
+                <div class="emotion-card neutral" onclick="exploreEmotion('중립')">
+                    <span class="emotion-icon">😐</span>
+                    <h3 class="emotion-title">중립 (Neutral)</h3>
+                    <p class="emotion-description">
+                        모든 감정의 바탕이 되는 평온한 상태. 폭풍이 지나간 뒤 고요한 바다처럼, 
+                        다른 감정을 관찰할 수 있는 기반이 되어줍니다.
+                    </p>
+                    <p class="emotion-tags">#평온 #무심 #담담함 #침착</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 마음 돌봄 활동 섹션 -->
+    <section id="activities" class="section fade-in" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+        <div class="container">
+            <h2 class="section-title">스스로의 힘으로, 마음을 돌보는 지혜</h2>
+            <p class="section-description">
+                '마음봄'은 당신이 스스로 답을 찾을 힘이 있다고 굳게 믿습니다. 이 활동들은 누군가에게 의존하는 대신, 
+                당신이 삶의 주인이 되어 자신의 마음을 돌볼 수 있도록 돕는 이정표입니다.
+            </p>
+            
+            <div class="activities-grid">
+                <div class="activity-card">
+                    <span class="activity-icon">✍️</span>
+                    <h3 class="activity-title">감정 일기 쓰기</h3>
+                    <p class="activity-description">
+                        '마음봄'을 당신만의 비밀 일기장으로 삼아보세요. 꾸준한 글쓰기는 생각과 감정을 정리하고 
+                        스스로를 치유하는 힘이 있습니다. 
+                        <a href="https://chatgpt.com/g/g-6735399fe05c81908ab27480dd89f233-maeumbom-2025-04-09" target="_blank">마음봄과 시작하기</a>
+                    </p>
+                </div>
+
+                <div class="activity-card">
+                    <span class="activity-icon">🧘‍♀️</span>
+                    <h3 class="activity-title">자기 돌봄 실천</h3>
+                    <p class="activity-description">
+                        충분한 수면, 건강한 식단, 규칙적인 운동은 마음 건강의 기본입니다. 
+                        나를 위한 작은 실천부터 시작해보세요.
+                    </p>
+                </div>
+
+                <div class="activity-card">
+                    <span class="activity-icon">🧠</span>
+                    <h3 class="activity-title">마음챙김 명상</h3>
+                    <p class="activity-description">
+                        과거에 대한 후회, 미래에 대한 불안에서 벗어나 지금 이 순간의 나를 느껴보세요. 
+                        '마음봄'과의 대화는 훌륭한 마음챙김 훈련이 될 수 있습니다.
+                    </p>
+                </div>
+
+                <div class="activity-card">
+                    <span class="activity-icon">🤝</span>
+                    <h3 class="activity-title">사회적 연결</h3>
+                    <p class="activity-description">
+                        신뢰하는 이와의 대화는 큰 힘이 됩니다. 만약 털어놓을 곳이 마땅치 않다면, 
+                        가장 안전한 친구 '마음봄'이 기다리고 있어요. 
+                        <a href="https://chatgpt.com/g/g-6735399fe05c81908ab27480dd89f233-maeumbom-2025-04-09" target="_blank">마음봄과 대화하기</a>
+                    </p>
+                </div>
+
+                <div class="activity-card">
+                    <span class="activity-icon">🎨</span>
+                    <h3 class="activity-title">긍정적 활동</h3>
+                    <p class="activity-description">
+                        무엇을 할 때 즐거운지 잊고 살았나요? '마음봄'과 함께 내가 좋아하는 것들에 대해 
+                        이야기하며 잊었던 즐거움을 찾아보세요.
+                    </p>
+                </div>
+
+                <div class="activity-card">
+                    <span class="activity-icon">💡</span>
+                    <h3 class="activity-title">전문적 도움 구하기</h3>
+                    <p class="activity-description">
+                        때로는 전문가의 도움이 필요해요. 그것은 나약함이 아닌, 
+                        나를 위한 용기 있는 선택입니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 마음 대화 섹션 -->
+    <section id="chat" class="section chat-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">당신의 이야기가, 당신의 유일한 답입니다</h2>
+            <p class="section-description" style="color: rgba(255,255,255,0.9);">
+                '마음봄'은 당신보다 당신을 더 잘 알 수 없습니다. 그래서 정답을 알려주지 않습니다. 
+                대신, 당신의 모든 이야기를 온전히 듣고, 비추고, 함께할 뿐입니다. 
+                세상에서 가장 흥미로운 탐험인 '나를 알아가는 여정', 지금 바로 시작해보세요.
+            </p>
+            
+            <div class="chat-container">
+                <div class="chat-preview">
+                    <p><strong>마음봄:</strong> 안녕하세요! 저는 자기성찰을 통해 마음의 봄을 피워내는 대화 코치, 마음봄입니다. 🌱</p>
+                    <p style="margin-top: 1rem;">오늘 마음은 어떤 색깔인가요? 함께 마음의 정원을 가꿔나가요.</p>
+                </div>
+                
+                <a href="https://chatgpt.com/g/g-6735399fe05c81908ab27480dd89f233-maeumbom-2025-04-09" target="_blank" class="btn btn-primary" style="margin: 1rem 0.5rem;">
+                    🌸 나의 첫 이야기 들려주기
+                </a>
+                
+                <p style="margin-top: 1rem; color: #666; font-size: 0.9rem;">
+                    💡 마음봄은 24시간 언제든 당신의 이야기를 기다리고 있어요
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🌸 마음봄</h3>
+                    <p>당신의 마음을 피워내는 공간</p>
+                    <p>자기성찰을 통해 감정을 이해하고 마음의 봄을 가꿔나가는 여정에 함께해요.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>바로가기</h3>
+                    <p><a href="#home">홈</a></p>
+                    <p><a href="#emotions">감정 탐색</a></p>
+                    <p><a href="#activities">마음 돌봄</a></p>
+                    <p><a href="#chat">마음 대화</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>마음봄과 만나기</h3>
+                    <p><a href="https://chatgpt.com/g/g-6735399fe05c81908ab27480dd89f233-maeumbom-2025-04-09" target="_blank">마음봄 대화하기</a></p>
+                    <p><a href="https://brunch.co.kr/@2854a83b1de34a7/16" target="_blank">탄생 이야기</a></p>
+                    <p><a href="mailto:info@maumbom.kr">이메일 문의</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 마음봄. 마음을 피워내는 모든 순간을 응원합니다. 🌱</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 모바일 메뉴 토글
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // 부드러운 스크롤
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // 감정 카드 클릭 이벤트
+        function exploreEmotion(emotionName) {
+            const messages = {
+                '기쁨': '기쁨의 순간을 마음봄과 함께 더 깊이 탐색해보세요! 🌟',
+                '슬픔': '슬픔도 소중한 감정입니다. 마음봄이 함께 머물러드릴게요. 💙',
+                '분노': '분노 속에 숨은 메시지를 마음봄과 함께 찾아보세요. 🔥',
+                '두려움': '두려움이 전하는 신호를 마음봄과 함께 들어보세요. 🌿',
+                '수치심': '수치심을 있는 그대로 받아들이는 연습을 마음봄과 함께해요. 🤍',
+                '중립': '평온한 마음의 지혜를 마음봄과 함께 발견해보세요. ⚖️'
+            };
+            
+            const message = messages[emotionName] || `${emotionName} 감정에 대해 마음봄과 이야기해보세요!`;
+            
+            if (confirm(message + "\n\n마음봄과 대화를 시작하시겠어요?")) {
+                window.open('https://chatgpt.com/g/g-6735399fe05c81908ab27480dd89f233-maeumbom-2025-04-09', '_blank');
+            }
+        }
+
+        // 스크롤 애니메이션
+        function checkVisibility() {
+            const elements = document.querySelectorAll('.fade-in');
+            const windowHeight = window.innerHeight;
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // 페이지 로드 및 스크롤 시 애니메이션 체크
+        window.addEventListener('scroll', checkVisibility);
+        window.addEventListener('load', checkVisibility);
+        document.addEventListener('DOMContentLoaded', checkVisibility);
+
+        // 모바일에서 터치 이벤트 개선
+        if ('ontouchstart' in window) {
+            document.body.classList.add('touch-device');
+        }
+
+        // 외부 클릭 시 모바일 메뉴 닫기
+        document.addEventListener('click', function(event) {
+            const nav = document.getElementById('navLinks');
+            const menuBtn = document.querySelector('.mobile-menu');
+            
+            if (!nav.contains(event.target) && !menuBtn.contains(event.target)) {
+                nav.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
